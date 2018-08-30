@@ -1,0 +1,190 @@
+/**헤더고정x**/
+header {   
+    position: inherit;
+}
+
+/**메뉴바**/
+
+.menu_block {
+    width: 20px;
+}
+
+#menu_icon {
+    display: block;
+    width: 30px;
+    padding: 10px 20px;
+}
+
+/**메뉴**/
+
+.menu_block:hover div{ display: inline; }
+
+.menubar{
+    top:150px;
+    position: fixed;
+    display: none;
+    z-index:10;
+    background-color: white;
+    border:none;
+    font-size:14px;
+    font-weight:bold;
+    padding: 10px 20px;
+    height: auto;
+    background-color: #fffbfb;
+
+}
+
+.menubar ul{
+    height:50px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    width: 100%;
+}
+
+.menubar li{
+    width: 100%;
+    background-color: #fffbfb;
+    float:left;
+    padding:0px;
+    z-index:0;
+}
+
+.menubar li a{
+    color:black;
+    display:block;
+    font-weight:normal;
+    line-height:50px;
+    margin:0px;
+    padding:0px 25px;
+    text-align:center;
+    text-decoration:none;
+}
+
+.menubar li a:hover, .menubar ul li:hover a{
+    color:dimgray;
+    text-decoration:none;    
+}
+
+.menubar li ul{
+    /* 평상시에는 드랍메뉴가 안보이게 하기 */
+    display:none; 
+    height:auto;
+    padding:0px;
+    margin:0px;
+    border:0px;
+    position:relative;
+    width:100%;
+    z-index:1;
+    /*top:1em;
+    /*left:0;*/
+}
+
+
+.menubar li:hover ul{
+    /* 마우스 커서 올리면 드랍메뉴 보이게 하기*/
+    display:block; 
+}
+    
+
+.menubar li li {
+    background-color: whitesmoke;
+    display:block;
+    float:none;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+.menubar li ul a{
+    display:block;
+    height:50px;
+    font-style:normal;
+    margin:0px;
+    padding:0px 10px 0px 15px;
+    text-align:center;
+}
+
+.menubar p{ clear:left; }
+
+.menubar #menu_site{
+    float: center;
+}
+.menubar #menu_site ul{
+    transform: translateX(0px);
+}
+
+#blank{
+    display: none;
+}
+
+/*****이미지슬라이스 **/
+#s{ padding:0; }
+
+#s div{
+   margin: 0 10%;
+    background-position: 100% 0px;
+    width: 80%;
+}
+
+
+
+/****유투브 리스트************/
+
+#v_div1, #v_div2{
+    width: 100%;
+    margin-top: 0px; 
+}
+
+#v_div1 h1 {
+    font-size: 20px;
+    padding: 0 10px;
+}
+
+#v_div1 iframe, #v_icon{
+ display: none;
+}
+
+#v_m .v_m_l {
+    height: 115px;
+    border-bottom: 1px solid #7e7e7e;
+    padding-top:10px;
+}
+
+#v_m .v_m_l iframe{
+    width: 40%;
+    height: 110px;
+}
+
+#v_m .v_m_r{
+    width: 60%;
+    float: right;
+    font-size: 13px;
+}
+
+#v_m .v_m_r p{
+    padding-left: 20px;
+    font-size: 12.5px;
+}
+
+.tooltiptext {
+    width: 100px;
+    font-size: 14px;
+    color: aliceblue;
+}
+
+
+
+/****매덩's pick*******/
+.l_list{ width:80%;}
+
+/****FOOTER***********/
+footer{ font-size: 14px; }
+
+footer h4 div div{
+    height: 25px;
+    width: 25px;
+    margin: 0px 5px;
+}
+
+

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+  <select id="getFileNo" resultType="Integer">
+  	select case when max(fileNo) > 0 then max(fileNo) else 1 end as fileNo
+  		from files
+  </select>
+ 
+<!-- 	insert into files  -->
+<!-- 		(boardNo, fileName, fileURL, userNo, regDate) -->
+<!-- 	values -->
+<!-- 		(#{boardNo}, #{fileName},#{fileURL},#{userNo},DATE_FORMAT(NOW(),'%Y%m%d')); -->
+	 
+<!--  </insert> -->
+ 
+ <select id="boardOne" parameterType="HashMap" resultType="HashMap">
+<!--  	select * from boards where boardNo = #{boardNo} -->
+
+	select * from files,boards
+            where files.fileNo=boards.fileNo and files.fileNo in ( select fileNo from boards where boardNo = #{boardNo});
+ </select>
+ 
+ <select id="fileOne" parameterType="HashMap" resultType="HashMap">
+<!--  	select * from boards where boardNo = #{boardNo} -->
+
+	select * from files
+            where fileNo = #{fileNo};
+ </select>
+ 
+<!--  <select id="filesList" parameterType="HashMap" resultType="HashMap"> -->
+<!--  	select * from files where delYn = 'N' and fileNo = #{fileNo} -->
+<!--  </select> -->
+ 
+<!-- <select id="boardList" resultType="HashMap"> -->
+<!-- select * from board where delYn = 'N' -->
+<!-- </select> -->
+
+<select id="selectPickList" resultType="HashMap">
+	select * from files,boards
+            where boards.delYn='N' and files.fileNo=boards.fileNo and files.fileNo in ( select fileNo from boards where boardType = 'pickList');
+</select>
+
+<select id="selectDetailLon" resultType="HashMap">
+	select * from files,boards
+            where boards.delYn='N' and files.fileNo=boards.fileNo and files.fileNo in ( select fileNo from boards where boardType = 'detailLon');
+</select>
+
+<select id="selectDetailBar" resultType="HashMap">
+	select * from files,boards
+            where boards.delYn='N' and files.fileNo=boards.fileNo and files.fileNo in ( select fileNo from boards where boardType = 'detailBar');
+</select>
+   
+<select id="selectSB" resultType="HashMap">
+   select * from files,sb
+            where files.fileNo=sb.fileNo and files.fileNo in ( select fileNo from sb);
+</select>
+
+
+ <update id="boardUpdate" parameterType="HashMap">
+	update boards
+	set boardTitle = #{boardTitle},
+		  boardContents = #{boardContents}
+	where boardNo = #{boardNo}
+</update>
+
+<!-- <update id="filesDel" parameterType="HashMap"> -->
+<!-- 	update files -->
+<!-- 	set delYn = 'Y' -->
+<!-- 	where fileNo = #{fileNo} -->
+<!-- </update> -->
+
+ <update id="boardFileUpdate" parameterType="HashMap"> 
+	update files, boards
+	set files.fileName = #{fileName},
+		  files.fileURL = #{fileURL},
+		  files.regDate = DATE_FORMAT(NOW(),'%Y%m%d')
+	where files.fileNo = boards.fileNo and files.fileNo in ( select fileNo from boards where boardNo = #{boardNo})
+ </update>
+ 
+ <update id="fileUpdate" parameterType="HashMap"> 
+	update files
+	set fileName = #{fileName},
+		  fileURL = #{fileURL},
+		  regDate = DATE_FORMAT(NOW(),'%Y%m%d')
+	where fileNo = #{fileNo}
+ </update>
+ <select id="boardList" resultType="HashMap">
+	select * from boards
+</select>
+ <insert id="boardInsert" parameterType="HashMap">
+	insert into boards 
+		(boardTitle, boardContents, regDate, boardType, fileNo)
+	values
+		(#{boardTitle},#{boardContents},DATE_FORMAT(NOW(),'%Y%m%d'),#{boardType}, #{fileNo});
+  </insert>
+   <insert id="fileInsert" parameterType="HashMap"> 
+	insert into files 
+		(fileName,fileURL,regDate)
+	values
+		(#{fileName},#{fileURL},DATE_FORMAT(NOW(),'%Y%m%d'));
+ </insert>
+ <update id="boardDel" parameterType="HashMap">
+	update boards
+	set delYn = 'Y'
+	where boardNo = #{boardNo}
+</update>
+ <update id="filesBoardDel" parameterType="HashMap">
+	update files, boards
+	set files.delYn = 'Y'
+	where files.fileNo = boards.fileNo and files.fileNo in ( select fileNo from boards where boardNo = #{boardNo})
+</update>
+
+<select id="selectYoutubeList" resultType="HashMap">
+	select * from youtube
+</select>
+ <update id="updateLikeNum" parameterType="HashMap">
+ update youtube set likeNum = likeNum + 1 where vNum = #{vNum};
+ </update>
+  <update id="updateBestNum" parameterType="HashMap">
+ update youtube set bestNum = bestNum + 1 where vNum = #{vNum};
+ </update>
+ 
+  <update id="updateYt" parameterType="HashMap">
+ update youtube set 
+ 		 vTitle = #{vTitle},
+		  vContents = #{vContents},
+		  vUrl = #{vUrl}
+	where vNum = #{vNum}
+ </update>
+ <select id="youtubeOne" parameterType="HashMap" resultType="HashMap">
+ 	select * from youtube where vNum = #{vNum}
+</select>
+</mapper>

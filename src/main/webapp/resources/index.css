@@ -1,0 +1,627 @@
+html, body{margin: 0 7%; }
+
+/*header*/
+
+header{
+    width:74%;
+    height: 20vh;
+    background: linear-gradient(to right,#f2d3e1 0,#eb549a 100%); 
+    position: fixed;
+    z-index: 10;
+    display: inline-block;
+    text-align: center;
+}
+header div{display: inline-block; }
+#main_header{ display: inline-block;}
+#main_header h1{ 
+    display: inline-block; font-size: 3.5em; margin: 1
+}
+#main_heder:hover{cursor: pointer;}
+
+.logo{
+    background-image:url(icon/airplane.svg);
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+    transform: translateY(20px);
+    display: inline-block;    
+}
+
+#menu_icon { display: none; }
+
+/**menu**/
+
+.menubar{
+    top:150px;
+    position: fixed;
+    display: inline;
+    z-index:10;
+    background-color: #fffbfb;
+    border:none;
+    width: 74%;
+    height: auto;
+    font-size:14px;
+    font-weight:bold;
+    padding: 10px 0px;
+    
+}
+
+.menubar ul{
+    height:50px;
+    list-style:none;
+    margin:0;
+    padding:0;
+    width: 100%;   
+}
+
+.menubar li{
+    background-color: #fffbfb;
+    float:left;
+    padding:0px;
+    z-index:0;
+}
+
+.menubar li a{
+    color:black;
+    display:block;
+    font-weight:normal;
+    line-height:50px;
+    margin:0px;
+    padding:0px 25px;
+    text-align:center;
+    text-decoration:none;
+}
+
+.menubar li a:hover, .menubar ul li:hover a{
+    color:dimgray;
+    text-decoration:none;
+}
+
+.menubar li ul{
+    display:none; /* 평상시에는 드랍메뉴가 안보이게 하기 */
+    height:auto;
+    padding:0px;
+    margin:0px;
+    border:0px;
+    position:absolute;
+    width:200px;
+    z-index:1;
+    /*top:1em;
+    /*left:0;*/
+}
+
+.menubar li:hover ul{
+    display:block;/* 마우스 커서 올리면 드랍메뉴 보이게 하기 */
+}
+
+.menubar li li {
+    background-color: whitesmoke;
+    display:block;
+    float:none;
+    margin:0px;
+    padding:0px;
+    width:200px;
+    bottom: -10px;
+    position: relative;
+}
+
+.menubar li:hover li a{
+    background:none;
+    
+}
+
+.menubar li ul a{
+    display:block;
+    height:50px;
+    font-style:normal;
+    margin:0px;
+    padding:0px 10px 0px 15px;
+    text-align:left;
+    
+}
+
+.menubar li ul a:hover, .menubar li ul li:hover a{
+    background-color: darkgrey ;
+    border:0px;
+    color:#ffffff;
+    text-decoration:none;
+    
+}
+
+.menubar p{
+    clear:left;
+}
+
+#blank{
+    height: 220px;
+}
+
+.menubar ul li div{
+    background-color: lightpink;
+    width: 200px;
+    height: 2px;
+    position: relative;
+    bottom: -10px;
+}
+
+
+.menubar #menu_site{
+    float: right;
+}
+.menubar #menu_site ul{
+    transform: translateX(-80px);
+}
+
+/*****??????? id=s** ?? 20180521 test4****/
+#s {
+    padding-top: 20px;
+    position: relative;
+}
+#s div{
+    display: inline-block;
+    margin: 0 20%;
+/*     background-image: url(img/slice.png); */
+    width: 60%;
+    height: 300px;
+    background-repeat: repeat;
+    background-position: 50% 0px;
+    background-position: center;
+    background-size: cover;
+    
+    animation-name: slide;
+    animation-duration: 30s;
+    animation-iteration-count: infinite;
+}
+
+/******button*******참고 20180517 test2 & main.css**********/
+
+#b {
+    width: 100vm;
+    text-align: center;
+    position: relative;
+}
+    
+#b div {
+    width: 100%;
+    display: inline-block;
+    overflow: hidden;
+}
+
+#b ul {    
+    width: calc(100vw * 4);
+    position: relative;
+    transition: 1s;
+    height: 400px;
+    padding: 0;
+}
+#b ul li {
+    display: inline-block;
+    width: 100vw;
+    height: 400px;
+    font-size: 3rem;
+    font-weight: bold;
+    float: left;
+    background-color: lightblue;
+}
+#b input {
+    cursor: pointer;
+    padding: 0 5px;
+    z-index: 1;
+    float: left;
+    position: relative;
+    transform: translateY(-10px);
+}
+#b .b_img{
+    background-position: center;
+    background-size: cover;
+}
+/* #b ul li:nth-child(1){ */
+/*     background-image: url(img/Barcelona.png); */
+/* } */
+/* #b ul li:nth-child(2){ */
+/*     background-image: url(img/venice.jpg); */
+/* } */
+/* #b ul li:nth-child(3){ */
+/*     background-image: url(img/santo.jpg); */
+/* } */
+/* #b ul li:nth-child(4){ */
+/*     background-image: url(img/pairs.png); */
+/* } */
+section input {
+    cursor: pointer;
+    position: fixed;
+    top: 400px;
+    padding: 0 20px;
+    z-index: 1;
+}
+.b_img div{
+    position: relative;
+    left: 50%;
+    transform: translate(-60%,0);
+    color:#3b4050;
+    font-weight: bolder;
+    font-size: 1em;
+    z-index: 1;
+}
+.b_img p{
+    display: none;
+}
+#b input:nth-child(1){left: calc(50% - 30px)}
+#b input:nth-child(2){left: calc(50% - 10px)}
+#b input:nth-child(3){left: calc(50% + 10px)}
+#b input:nth-child(4){left: calc(50% + 30px)}
+
+#b_1:checked~ul{transform: translateX(0px);}
+#b_2:checked~ul{transform: translateX(-100vw);}
+#b_3:checked~ul{transform: translateX(-200vw);}
+#b_4:checked~ul{transform: translateX(-300vw);}
+
+.b_img:hover{
+    filter:grayscale(50%);
+}
+.b_img:hover div p{
+    display: inline-block;
+}
+
+/**************애니메이션*****************/
+@-webkit-keyframes slide {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: -2469px 0;
+    }
+}
+
+/********youtube 리스트*******************/
+
+#v{
+    width: 100%;
+    height: 534px;
+}
+
+#v div{
+    float: left;
+}
+
+#v_div1{
+    width: 60%;
+}
+
+#v_div1 h1 {
+    padding: 10px 20px;
+}
+
+#v_div1 iframe{
+    width:100%;
+    height: 410px;
+}
+
+#v_div2 {
+    width: 40%;
+    margin-top: 30px; 
+    transform: translateY(-6px);
+}
+
+#v_div2 div{
+    width: 100%;
+}
+
+#v_div2 h1{
+    margin: 10px 20px;
+    font-size: 15px;
+}
+
+#v_icon{
+    padding-top:40px;
+    border-bottom: 1px solid #7e7e7e;
+}
+
+#v_icon #icon2{
+    
+    width: 100%;
+    text-align: right;
+}
+#v_icon img{
+    padding: 0 20px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#v_m ul {
+    padding: 0; margin: 0;
+    list-style: none;
+}
+#v_m li {
+    display: inline-block;
+    float: left;
+    padding-left: 20px;
+}
+#v_m .v_m_l {
+    width: calc(100% - 20px);
+    height: 94px;
+
+    padding-top:10px;
+}
+
+#v_m .v_m_l iframe{
+    width: 30%;
+    height: 93px;
+}
+
+#v_m .v_m_r{
+    width: 70%;
+    float: right;
+    font-size: 14px;
+}
+
+#v_m .v_m_r p{
+    padding-left: 20px;
+    font-size: 13px;
+}
+
+#v_m .v_li_r {
+    float: right;
+    cursor: pointer;
+
+
+}
+
+/* 리스트 좋아요 및 아이콘_*/
+#v_m .v_share{
+    background-image: url(icon/share-post-symbol.png);
+    float: right;
+    position: relative;
+    right: 0;
+    margin-right: 10px;
+}
+#v_m .v_heart{
+    background-image: url(icon/heart.png);
+    transform: translateX(15px);
+}
+
+#v_m .v_thumb{
+    background-image: url(icon/thumb-up.png);
+    transform: translateX(15px);
+}
+
+/*(tooltip)*/
+#v_m .v_icon{
+    height: 20px;
+    background-position: center;
+    background-size: cover;    
+    position: relative;
+    display: inline-block;
+}
+
+#v_m .v_icon:hover{ cursor: pointer; }
+
+
+.tooltiptext {
+    visibility: hidden;
+    width: 100px;
+    color: aliceblue;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 20;
+    bottom: 100%;
+    opacity: 0;
+    transition: opacity 1s;
+    font-weight: bolder;
+}
+.v_heart .tooltiptext{
+    background-color: #e84e54;
+}
+.v_thumb .tooltiptext{
+    background-color: #416fa5;
+}
+#tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+    cursor: pointer;
+    transform: translateX(-50px);
+    margin-bottom: 5px;
+}
+
+span {
+    display: block;
+}
+
+/** 매덩's pick**********/
+
+#l{
+   width: 100%;
+   padding: 0 8px;
+}
+
+#l_div1{width: 100%;}
+
+#l div{ display: inline-block; }
+
+#l ul{
+    list-style: none;
+}
+
+.l_list{
+    width: 25%;
+    display: inline-block;
+    float: left;
+    padding: 5px 30px;
+}
+
+.l_list img{
+    text-align: center;
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+}
+
+.l_r h1{
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.l_r p{
+    font-size: 12.5px;
+    text-align: left;
+    box-sizing: inherit;
+    word-break: break-all;
+    white-space: pre-line;
+}
+
+/**list img hover**/
+
+.container_img {
+    position: relative;
+}
+
+.pick_img {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.l_img:hover{cursor: pointer;}
+
+
+.middle_img {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.container_img:hover .pick_img {
+  opacity: 0.3;
+}
+
+.container_img:hover .middle_img {
+  opacity: 1;
+}
+
+.text_img {
+  background-color: aliceblue;
+  color: black;
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+
+
+
+/************page************/
+
+/*barcelona*/
+.bar{
+    height: 100vh;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+/* #bar_1{ */
+/*     background-image: url(img/barcelona/casaba.jpg); */
+/* } */
+/* #bar_2{ */
+/*     background-image: url(img/barcelona/casami.jpg); */
+/* } */
+/* #bar_3{ */
+/*     background-image: url(img/barcelona/parkgu.jpg); */
+/* } */
+/* #bar_4{ */
+/*     background-image: url(img/barcelona/Sagrada.jpg); */
+/* } */
+article{
+    display: inline-block;
+    position: relative;
+    top:50%;
+    left: 50%;
+    color: #ffffff;
+    font-weight: bolder;
+    transform: translateX(-50%) translateY(-50%);
+    text-align: center;
+}
+.bar h1{
+    font-size: 2em;   
+}
+
+/*london*/
+
+/* #lon_1{ */
+/*     background-image: url(img/london/towerbridge.jpg); */
+/* } */
+/* #lon_2{ */
+/*     background-image: url(img/london/buckinghampalace.jpg); */
+/* } */
+/* #lon_3{ */
+/*     background-image: url(img/london/bigben.jpg); */
+/* } */
+/* #lon_4{ */
+/*     background-image: url(img/london/londoneye.jpg); */
+/* } */
+
+#before_button {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
+
+/******top btn************************/
+
+#top_button {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+}
+
+/*****footer*****/
+
+footer {
+    margin: 0; clear:both; 
+    height: 10vh; 
+    background-color: dimgrey;
+    font-size: 1em; text-align: center; color: whitesmoke;
+}
+footer h4, h5{ margin: 0;}
+
+footer #comment{
+    width: 100%;align-content: center; padding: 20px 0;
+}
+footer h5{
+    transform: translateX(10%);
+}
+footer .co_icon{
+    float: right;
+    height: 35px;
+    width: 35px;
+    background-position:center;
+    background-size: cover;
+    margin: 0 5px;
+}
+
+footer .co_icon:hover{
+    opacity: 0.6;    
+    cursor: pointer;
+}
+
+footer #face{
+    background-image: url(icon/facebook.svg);
+}
+footer #twitt{
+    background-image: url(icon/twitter.svg);
+}
+footer #insta{
+    background-image: url(icon/instagram.svg);
+}
+footer #whats{
+    background-image: url(icon/whatsapp.svg); 
+}
+
