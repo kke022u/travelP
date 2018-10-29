@@ -12,7 +12,6 @@
   <select id="userSelect" parameterType="HashMap" resultType="HashMap">
   	select * from user where userId= #{userId} and userPassword = #{userPassword} limit 1
   </select>
-  
    <select id="userList" resultType="HashMap">
 	select * from user
  	</select>

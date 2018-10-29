@@ -1,10 +1,3 @@
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-
-
-
-
 package kr.co.kke.app.controller;
 
 import java.util.HashMap;
@@ -34,7 +27,6 @@ public class UserController {
 	@Autowired
 	DaoInterface di;
 	
-	
 	@Resource(name="sqlSession")
 	SqlSession session;
 
@@ -48,20 +40,10 @@ public class UserController {
 	@RequestMapping("/userInsert")
 	public String userInsert(HttpServletRequest req) {
 		HashMap<String, Object> param = HttpUtil.getParamMap(req);
-		/*String userEmail = req.getParameter("userEmail");
-		String userPassword = req.getParameter("userPassword");
-		String userName = req.getParameter("userName");
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("userEmail", userEmail);
-		param.put("userPassword", userPassword);
-		param.put("userName", userName);
-		*/
 		param.put("sqlType", "user.userInsert");
 		param.put("sql", "insert");
 		
 		int status = (int) di.call(param);
-		//int status = Integer.parseInt(resultMap.get("status").toString());
-		//int status = session.insert("user.userInsert",param);
 		System.out.println(status);
 		
 		return "redirect:/admin";
@@ -70,19 +52,10 @@ public class UserController {
 	@RequestMapping("/userSelect")
 	public String userSelect(HttpServletRequest req, RedirectAttributes attr, HttpSession session) {
 		HashMap<String, Object> param = HttpUtil.getParamMap(req);
-		/*
-		String userEmail = req.getParameter("userEmail");
-		String userPassword = req.getParameter("userPassword");
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("userEmail", userEmail);
-		param.put("userPassword", userPassword);
-		*/
 		param.put("sqlType", "user.userSelect");
 		param.put("sql", "selectOne");
 		
 		HashMap<String, Object> resultMap = (HashMap<String, Object>)di.call(param);
-		//HashMap<String, Object> resultMap = session.selectOne("user.userSelect",param);
 		
 		if(resultMap == null) {
 			resultMap = new HashMap<String, Object>();
@@ -93,7 +66,6 @@ public class UserController {
 			
 		}
 		session.setAttribute("user", resultMap);
-		//attr.addFlashAttribute("data", resultMap);
 		
 		return "redirect:/admin";
 	}

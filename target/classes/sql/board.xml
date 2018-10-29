@@ -9,34 +9,16 @@
   		from files
   </select>
  
-<!-- 	insert into files  -->
-<!-- 		(boardNo, fileName, fileURL, userNo, regDate) -->
-<!-- 	values -->
-<!-- 		(#{boardNo}, #{fileName},#{fileURL},#{userNo},DATE_FORMAT(NOW(),'%Y%m%d')); -->
-	 
-<!--  </insert> -->
  
  <select id="boardOne" parameterType="HashMap" resultType="HashMap">
-<!--  	select * from boards where boardNo = #{boardNo} -->
-
 	select * from files,boards
             where files.fileNo=boards.fileNo and files.fileNo in ( select fileNo from boards where boardNo = #{boardNo});
  </select>
  
  <select id="fileOne" parameterType="HashMap" resultType="HashMap">
-<!--  	select * from boards where boardNo = #{boardNo} -->
-
 	select * from files
             where fileNo = #{fileNo};
  </select>
- 
-<!--  <select id="filesList" parameterType="HashMap" resultType="HashMap"> -->
-<!--  	select * from files where delYn = 'N' and fileNo = #{fileNo} -->
-<!--  </select> -->
- 
-<!-- <select id="boardList" resultType="HashMap"> -->
-<!-- select * from board where delYn = 'N' -->
-<!-- </select> -->
 
 <select id="selectPickList" resultType="HashMap">
 	select * from files,boards
@@ -65,12 +47,6 @@
 		  boardContents = #{boardContents}
 	where boardNo = #{boardNo}
 </update>
-
-<!-- <update id="filesDel" parameterType="HashMap"> -->
-<!-- 	update files -->
-<!-- 	set delYn = 'Y' -->
-<!-- 	where fileNo = #{fileNo} -->
-<!-- </update> -->
 
  <update id="boardFileUpdate" parameterType="HashMap"> 
 	update files, boards

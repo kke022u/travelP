@@ -24,15 +24,6 @@ import net.sf.json.JSONObject;
 @Controller
 public class BoardController {
 	
-//	@RequestMapping("/bInsert")
-//	public String	bInsert(HttpSession session) {
-//		if(HttpUtil.checkLogin(session)) {
-//			return "board/insert";
-//		}else {
-//			return "redirect:/login";
-//		}
-//	}
-	
 	@Autowired
 	DaoInterface di;
 	
@@ -50,15 +41,12 @@ public class BoardController {
 				String fileName = dataList.get(i).get("fileName").toString();
 				String fileURL = dataList.get(i).get("fileURL").toString();
 				HashMap<String, Object> fileMap = new HashMap<String, Object>();
-//				fileMap.put("boardNo", boardNo);
 				fileMap.put("fileName", fileName);
 				fileMap.put("fileURL", FinalUtil.FILE_DNS + fileURL);
-//				fileMap.put("userNo", userMap.get("userNo"));
 				fileMap.put("sqlType", "board.fileInsert");
 				fileMap.put("sql", "insert");
 				
 				status = (int) di.call(fileMap);
-//				status = session.insert("board.fileInsert", fileMap);
 			}
 			
 				if(status == 1) {
@@ -99,12 +87,6 @@ public class BoardController {
 		
 		
 
-//
-//    @RequestMapping("/bSelect")
-//    public String bSelect() {
-//    	return "board/detail";
-//    }
-//    
     @RequestMapping("/bld")
     public ModelAndView bld(HttpServletRequest req) {
     	String boardNo = req.getParameter("boardNo");
@@ -116,10 +98,6 @@ public class BoardController {
     	param.put("sql","selectOne");
     	resultMap.put("boardData", di.call(param));
     	
-//    	param.put("sqlType","board.filesList");
-//    	param.put("sql","selectList");
-//    	resultMap.put("filesData", di.call(param));
-//    	
     	return HttpUtil.makeJsonView(resultMap);
     }
     
@@ -134,18 +112,10 @@ public class BoardController {
     	param.put("sql","selectOne");
     	resultMap.put("boardData", di.call(param));
     	
-//    	param.put("sqlType","board.filesList");
-//    	param.put("sql","selectList");
-//    	resultMap.put("filesData", di.call(param));
     	System.out.println(resultMap);
     	return HttpUtil.makeJsonView(resultMap);
     }
     
-//    
-//    @RequestMapping("/bList")
-//	public String bList() {
-//    	return "board/list";
-//	}
     
     @RequestMapping("/spl")
     public ModelAndView spl() {
@@ -199,33 +169,11 @@ public class BoardController {
     	param.put("sqlType", "board.boardList");
     	param.put("sql", "selectList");
     	List list = (List) di.call(param);
-//    	List list = session.selectList("board.boardList");
     	HashMap<String, Object> resultMap = new HashMap<String, Object>();
     	resultMap.put("list", list);
     	return HttpUtil.makeJsonView(resultMap);
     }
     
-//    @RequestMapping("/bUpdate")
-//    public String bUpdate(HttpSession session, HttpServletRequest req, RedirectAttributes ra) {
-//    	if(HttpUtil.checkLogin(session)) {
-//    		HashMap<String, Object> userMap = (HashMap<String, Object>) session.getAttribute("user");
-//    		HashMap<String, Object> paramMap = HttpUtil.getParamMap(req);
-//    		String userNo1 = userMap.get("userNo").toString();
-//    		paramMap.put("sqlType", "board.boardOne");
-//    		paramMap.put("sql", "selectOne");
-//    		HashMap<String, Object> resultMap = (HashMap<String, Object>) di.call(paramMap);
-//    		String userNo2 = resultMap.get("userNo").toString();
-//    		if(userNo1.equals(userNo2)) {
-//    			return "board/update";
-//    		}else {
-//    			ra.addFlashAttribute("userNo", userNo2);
-//    			return "redirect:/bSelect";
-//    		}
-//		}else {
-//			return "redirect:/login";
-//		}
-//    }
-//    
     @RequestMapping("/bud")
 	public ModelAndView bud(HttpServletRequest req, HttpSession session) {
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -235,7 +183,6 @@ public class BoardController {
 			String boardContents = req.getParameter("boardContents");
 			String data = req.getParameter("data");	
 			String delData = req.getParameter("delData");
-//			HashMap<String, Object> userMap = (HashMap<String, Object>) session.getAttribute("user");
 			
 			/********************************************************************************************/
 			HashMap<String, Object> params = new HashMap<String, Object>();
@@ -246,18 +193,9 @@ public class BoardController {
 			params.put("sqlType", "board.boardUpdate");
 	    	params.put("sql", "update");
 			int status = (int) di.call(params);
-	//		int status = session.update("board.boardUpdate", params);
 			/********************************************************************************************/
 			
 			if(status == 1) {
-//				List<JSONObject> delList = JSONArray.fromObject(delData);
-//				for(int i = 0; i < delList.size(); i++) {
-//					params = new HashMap<String, Object>();
-//					params.put("sqlType", "board.filesDel");
-//			    	params.put("sql", "update");
-//			    	di.call(params);
-//	//				session.update("board.filesDel", delList.get(i));
-//				}
 				
 				List<Map<String, Object>> dataList = JSONArray.fromObject(data);
 				for(int i = 0; i < dataList.size(); i++) {
@@ -270,11 +208,9 @@ public class BoardController {
 				
 					
 					fileMap.put("fileURL", FinalUtil.FILE_DNS + fileURL);
-//					fileMap.put("userNo", userMap.get("userNo"));
 					fileMap.put("sqlType", "board.boardFileUpdate");
 					fileMap.put("sql", "update");
 					di.call(fileMap);
-	//				status = session.insert("board.fileInsert", fileMap);
 				}
 				
 				if(status == 1) {
@@ -304,7 +240,6 @@ public class BoardController {
 	
 				List<Map<String, Object>> dataList = JSONArray.fromObject(data);
 				for(int i = 0; i < dataList.size(); i++) {
-//					String fileName = dataList.get(i).get("fileName").toString();
 					String fileURL = dataList.get(i).get("fileURL").toString();
 					HashMap<String, Object> fileMap = new HashMap<String, Object>();
 					fileMap.put("fileNo", fileNo);
@@ -323,8 +258,6 @@ public class BoardController {
 		return HttpUtil.makeJsonView(map);    
     }
     
-//    
-//    
     @RequestMapping("/bDel")
     public String bDel(HttpServletRequest req) {
     	String boardNo = req.getParameter("boardNo");
@@ -430,10 +363,6 @@ public class BoardController {
     	param.put("sql","selectOne");
     	resultMap.put("boardData", di.call(param));
     	
-//    	param.put("sqlType","board.filesList");
-//    	param.put("sql","selectList");
-//    	resultMap.put("filesData", di.call(param));
-//    	
     	return HttpUtil.makeJsonView(resultMap);
     }
 }
